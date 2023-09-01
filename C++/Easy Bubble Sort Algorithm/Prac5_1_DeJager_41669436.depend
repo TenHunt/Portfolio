@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1693557402 source:c:\users\maxie\desktop\nwu bsc it\cmpg121\c++\practical assignments\prac5_dejager_41669436\prac5_1_dejager_41669436\main.cpp
+	<iostream>
+	<time.h>
+	<iomanip>
+
