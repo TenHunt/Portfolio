@@ -1,9 +1,10 @@
 /*
-Add taken/not-taken value to each piece at start?
-Keep track of taken?
-Store legal moves in each piece?
-Detect if other colour piece or same colour piece is on destination coords?
-Store which piece is on a piece (if its taken or not) and then...
+- Add taken/not-taken value to each piece at start?
+- Keep track of taken?
+- Store legal moves in each piece?
+- Detect if other colour piece or same colour piece is on destination coords?
+- Store which piece is on a piece (if its taken or not) and then...
+- Possibly add validation to prevent one piece from being in two locations at once? Not really needed if code is 100%
 */
 
 #include <iostream>
@@ -64,7 +65,6 @@ int main() // Begin main -------------------------------------------------------
 
         }
     }
-
     return 0;
 } // End main ---------------------------------------------------------------------------------------------
 
@@ -72,21 +72,18 @@ void movePiece(Pieces *pPieces, Coordinates (*pBoard)[8], char *turn)
 {
     string origin;
     string destin;
-
     cout << "\nEnter the coordinates of the piece to move: ";
     cin >> origin;
     cout << "Enter the coordinates to move to: ";
     cin >> destin;
-
-
 }
 
-void displayBoard(Coordinates (*pBoard)[8]) // Displays chessboard using new method (old method is in populateChessboard)
+void displayBoard(Coordinates (*pBoard)[8]) // Displays chessboard
 {
     cout << "\nCurrent chessboard: " << endl;
     for(int i = 0; i < 8; i++) {
         for(int j = 0; j < 8; j++) {
-            if(pBoard[i][j].taken == "") // If not taken, cout coordinates, otherwise cout the piece on it
+            if(pBoard[i][j].taken == "") // If not taken, cout coordinates, otherwise cout the piece on it's code
             {
                 cout << setw(4) << left << pBoard[i][j].xyLoc;
             }
@@ -99,7 +96,7 @@ void displayBoard(Coordinates (*pBoard)[8]) // Displays chessboard using new met
     }
 }
 
-void populateChessboard(Coordinates (*pBoard)[8]) // Populates and displays chessboard using old method
+void populateChessboard(Coordinates (*pBoard)[8]) // Populates and displays chessboard
 {
     for(int i = 0; i < 8; i++) {
         for(int j = 0; j < 8; j++) {
@@ -107,7 +104,8 @@ void populateChessboard(Coordinates (*pBoard)[8]) // Populates and displays ches
             pBoard[i][j].number = 8 - i;
             pBoard[i][j].xyLoc += pBoard[i][j].character + to_string(pBoard[i][j].number);
             pBoard[i][j].taken = "";
-            cout << pBoard[i][j].xyLoc << " ";
+            //cout << pBoard[i][j].xyLoc << " "; // Old method (which works but doesn't handle piece codes well)
+            cout << setw(4) << left << pBoard[i][j].xyLoc; // New method
         }
         cout << endl;
     }
@@ -150,11 +148,9 @@ void addPieces(Pieces *pPieces, Coordinates (*pBoard)[8]) // Creates pieces and 
             }
         }
     }
-
     string colour = "white";
     string colLet = "w";
     int black = 0;
-
     for(int i = 0; i < 8; i++) // White unique pieces
     {
         colour = "white";
@@ -173,7 +169,7 @@ void addPieces(Pieces *pPieces, Coordinates (*pBoard)[8]) // Creates pieces and 
     }
     colour = "white";
     colLet = "w";
-    for(int i = 0; i < 2; i++)
+    for(int i = 0; i < 2; i++) // Gives colour, name, code
     {
         pPieces[i+16+black].name = colour + " Castle 1";
         pPieces[i+16+black].code = colLet + "C1";
@@ -199,10 +195,19 @@ void addPieces(Pieces *pPieces, Coordinates (*pBoard)[8]) // Creates pieces and 
         pPieces[i+23+black].name = colour + " Castle 2";
         pPieces[i+23+black].code = colLet + "C2";
         cout << "The " << pPieces[i+23+black].name << " is located at " << pPieces[i+23+black].xLoc << pPieces[i+23+black].yLoc << endl;
-
         colour = "black";
         colLet = "b";
         black = 7; // 8 less 1 to compensate for i incrementing
+    }
+    for(int i = 0; i < 16; i++){ // Assigns location for pieces
+        for(int m = 0; m < 8; m++) {
+            for(int n = 0; n < 8; n++) {
+                if (pBoard[m][n].xyLoc == pPieces[i+16].xyLoc)
+                {
+                    pBoard[m][n].taken = pPieces[i+16].code;
+                }
+            }
+        }
     }
 }
 
