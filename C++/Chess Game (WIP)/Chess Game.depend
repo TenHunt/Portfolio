@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1694079788 source:c:\users\maxie\desktop\nwu bsc it\cmpg121\c++\chess game\main.cpp
+	<iostream>
+	<iomanip>
+
