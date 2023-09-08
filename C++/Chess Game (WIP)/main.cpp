@@ -26,6 +26,7 @@ struct Pieces { // Struct for each piece
     string colour; // white or black
     string name; // Pawn 1, Castle 2, Queen, etc.
     string code; // bP1, wC2, bQ, etc.
+    string legal; // Legal moves, direction + number of moves (d8 for 8 diagonal moves for example)
 };
 
 void populateChessboard(Coordinates (*pBoard)[8]); // Populates and displays chessboard
@@ -85,8 +86,9 @@ void movePiece(Pieces *pPieces, Coordinates (*pBoard)[8], char *turn) // Big fun
         string origin = "";
         string destin = "";
         bool validInput = false;
-        bool allowedMove = false;
-        validMove = false;
+        bool allowedMove = false; // Checks colours and coords within range
+        bool legal = false; // Checks if the piece is allowed to move that
+        validMove = false; // Checks if moved properly
         bool foundO = false;
         bool foundD = false;
         int movingPiece = 0;
@@ -116,7 +118,7 @@ void movePiece(Pieces *pPieces, Coordinates (*pBoard)[8], char *turn) // Big fun
             for(int k = 0; k < 32; k++){ // Run through all pieces (adjust to run through only specific colour maybe?)
                 if(origin == pPieces[k].xyLoc){ // Find if piece is on origin (before going through board)
                     if(pPieces[k].code[0] == *turn){
-                        cout << "found origin" << endl;
+                        //cout << "found origin" << endl;
                         foundO = true; // Will need to add to WHILE LOOP to control?
                         movingPiece = k;
                         allowedMove = true;
@@ -128,35 +130,79 @@ void movePiece(Pieces *pPieces, Coordinates (*pBoard)[8], char *turn) // Big fun
             }
         }while (allowedMove == false);
 
+        // Legal should also check if there's a piece in the way or not ----------------------------------------------------------!
+        do{
+            bool sameX = false;
+            bool sameY = false;
+            bool straight = false;
+            bool diagonal = false;
+            bool shapeL = false;
+            bool obstruct = false;
+            unsigned int distance = 0;
+
+            if(origin[0] == destin[0]){ // If X coordinate is the same
+                sameX = true;
+                straight = true;
+            }
+            else if(origin[1] == destin[1]){ // If Y coordiante is the same
+                sameY = true;
+                straight = true;
+            }
+            else{
+                diagonal = true;
+            }
+            if(pPieces[movingPiece].legal[0] == 's' && straight){ // If piece legal move is straight and desired move is straight
+                if(origin[0] == destin[0]){ // If same X
+                    distance = origin[1] - destin[1]; // Movement must be across Y
+                }
+                else{ // Same Y then
+                    distance = origin[0] - destin[0];
+                }
+                if (distance <= pPieces[movingPiece].legal[1])
+                {
+                    // more code for piece in way
+                    legal = true;
+                }
+            }
+            else if(pPieces[movingPiece].legal[0] == 'd' && diagonal){ // If piece legal move is diagonal and desired move is diagonal
+                // adjust code for diagonal
+            }
+            else{ // Mismatch legal and move direction
+                cout << "Illegal move for selected piece!" << endl;
+            }
+        }while (legal == false);
+
+        // ----------------
+
         for(int i = 0; i < 8; i++) {
             for(int j = 0; j < 8; j++) { // Run through all x and y
                 if(pBoard[i][j].taken == pPieces[movingPiece].code){ // Finds where piece is/was
                     pBoard[i][j].taken = ""; // Reset origin to coords
-                    cout << "origin reset" << endl;
+                    //cout << "origin reset" << endl;
                 }
                 if(destin == pBoard[i][j].xyLoc){ // Find destination
                     foundD = true;
-                    cout << "found destin" << endl;
+                    //cout << "found destin" << endl;
                     if(pBoard[i][j].taken != "")
                     {
-                        cout << "piece on destin" << endl;
+                        //cout << "piece on destin" << endl;
                         for(int k = 0; k < 32; k++){ // Run through all pieces
                                 if(pPieces[k].xyLoc == destin){ // Finds piece on spot and removes it
                                     pPieces[k].xyLoc = "";
                                     pBoard[i][j].taken = pPieces[movingPiece].code; // Move piece to destination on board
                                     pPieces[movingPiece].xyLoc = destin; // Record new location in pieces
                                     validMove = true; // Confirm move was valid
-                                    cout << "1destin set" << endl;
+                                    //cout << "1 destin set" << endl;
                                     break;
                                 }
                         }
                     }
                     else{
-                        cout << "no piece on destin" << endl;
+                        //cout << "no piece on destin" << endl;
                         pBoard[i][j].taken = pPieces[movingPiece].code; // Move piece to destination on board
                         pPieces[movingPiece].xyLoc = destin; // Record new location in pieces
                         validMove = true; // Confirm move was valid
-                        cout << "2destin set" << endl;
+                        //cout << "2destin set" << endl;
                     }
                 }
             }
