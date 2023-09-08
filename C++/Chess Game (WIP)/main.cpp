@@ -1,5 +1,6 @@
 /*
 To-do:
+- (Should be easy) Allowing selecting piece code instead of the coords its on to move it
 - Store legal moves in each piece. Check for legal moves algorithm.
 - Implement castling.
 - Check for stalemate.
