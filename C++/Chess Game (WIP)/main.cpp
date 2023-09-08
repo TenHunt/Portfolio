@@ -1,10 +1,9 @@
 /*
-- Add taken/not-taken value to each piece at start?
-- Keep track of taken?
-- Store legal moves in each piece?
-- Detect if other colour piece or same colour piece is on destination coords?
-- Store which piece is on a piece (if its taken or not) and then...
-- Possibly add validation to prevent one piece from being in two locations at once? Not really needed if code is 100%
+To-do:
+- Store legal moves in each piece. Check for legal moves algorithm.
+- Implement castling.
+- Check for stalemate.
+- Possibly add validation to prevent one piece from being in two locations at once? Not really needed if code is 100%.
 */
 
 #include <iostream>
@@ -19,81 +18,204 @@ struct Coordinates { // Two-dimensional structure for the array of 'a' through '
     string taken; // Empty if not taken, filled by name of piece if taken
 };
 
-struct Pieces {
-    char xLoc;
-    int yLoc;
-    string xyLoc;
-    string colour;
-    string name;
-    string code;
+struct Pieces { // Struct for each piece
+    char xLoc; // The x coordinate
+    int yLoc; // The y coordinate
+    string xyLoc; // Both together
+    string colour; // white or black
+    string name; // Pawn 1, Castle 2, Queen, etc.
+    string code; // bP1, wC2, bQ, etc.
 };
 
 void populateChessboard(Coordinates (*pBoard)[8]); // Populates and displays chessboard
 
-void addPieces(Pieces *pPieces, Coordinates (*pBoard)[8]); // Add pieces to starting position
+void addPieces(Pieces *pPieces, Coordinates (*pBoard)[8]); // Creates pieces and places them. Uses pPieces[] instead of *(pPieces + i) for indexing for clarity, but both can work.
 
-void movePiece(Pieces *pPieces, Coordinates (*pBoard)[8], char *turn);
+void movePiece(Pieces *pPieces, Coordinates (*pBoard)[8], char *turn); // Big function that validates input, manages moving and taking
 
-void displayBoard(Coordinates (*pBoard)[8]);
+void displayBoard(Coordinates (*pBoard)[8], Pieces *pPieces); // Displays board and taken pieces
+
+void checkMate(Pieces *pPieces, Coordinates (*pBoard)[8], bool *checkmate, bool *stalemate); // Determines if checkmate happened (stalemate WIP)
 
 int main() // Begin main ---------------------------------------------------------------------------------------
 {
-    Coordinates arrBoard[8][8];
+    Coordinates arrBoard[8][8]; // The chessboard
     Coordinates (*pBoard)[8] = arrBoard; // Two-dimensional pointer to the board Coordinates struct array
     Pieces arrPieces[32]; // {8 white pawns, 8 black pawns, 8 unique white pieces, 8 unique black pieces}
     Pieces *pPieces = arrPieces;
-    //Pieces arrPiecesW[16]; // {8 white pawns, 8 unique white pieces}
-    //Pieces *pPiecesW = arrPiecesW;
-    //Pieces arrPiecesW[16]; // {8 black pawns, 8 unique black pieces}
-    //Pieces *pPiecesW = arrPiecesW;
     char turn = 'w';
     bool checkmate = false;
     bool stalemate = false;
 
-    populateChessboard(pBoard);
-    addPieces(arrPieces, arrBoard);
+    populateChessboard(arrBoard); // Initialize the chessboard
+    addPieces(arrPieces, arrBoard); // Create pieces and add them to the board
 
-    if(checkmate != true && stalemate != true)
+    while(checkmate != true && stalemate != true) // Main loop, runs until end of game
     {
-        if(turn == 'w')
+        if(turn == 'w') // White's turn
         {
-            movePiece(pPieces, pBoard, &turn);
-            displayBoard(pBoard);
+            movePiece(arrPieces, arrBoard, &turn); // Moving
+            displayBoard(arrBoard, arrPieces); // Display after moving
+            checkMate(arrPieces, arrBoard, &checkmate, &stalemate); // Check if over
+            turn = 'b'; // Change turn
         }
-        else //(turn == 'b')
+        else // Black's turn
         {
-
+            movePiece(arrPieces, arrBoard, &turn); // Moving
+            displayBoard(arrBoard, arrPieces); // Display after moving
+            checkMate(arrPieces, arrBoard, &checkmate, &stalemate); // Check if over
+            turn = 'w'; // Change turn
         }
     }
-    return 0;
-} // End main ---------------------------------------------------------------------------------------------
+    if(turn == 'w'){ // Trying this
+        cout << "\nBlack wins!" << endl;
+    }
+    else{
+        cout << "\nWhite wins!" << endl;
+    }
 
-void movePiece(Pieces *pPieces, Coordinates (*pBoard)[8], char *turn)
+    return 0;
+} // End main --------------------------------------------------------------------------------------------------
+
+void movePiece(Pieces *pPieces, Coordinates (*pBoard)[8], char *turn) // Big function that validates input, manages moving and taking
 {
-    string origin;
-    string destin;
-    cout << "\nEnter the coordinates of the piece to move: ";
-    cin >> origin;
-    cout << "Enter the coordinates to move to: ";
-    cin >> destin;
+    bool validMove = false; // Assume move is false until proven otherwise
+    do{ // Runs first time always, then checks if move was valid, if not then reruns
+        string origin = "";
+        string destin = "";
+        bool validInput = false;
+        bool allowedMove = false;
+        validMove = false;
+        bool foundO = false;
+        bool foundD = false;
+        int movingPiece = 0;
+        int takenPiece = 0;
+        do {
+            do{
+                if(*turn == 'w'){
+                    cout << "\nWhite, enter the coordinates of the piece to move: ";
+                    cin >> origin;
+                    cout << "Enter the coordinates to move to: ";
+                    cin >> destin;
+                }
+                else {
+                    cout << "\nBlack, enter the coordinates of the piece to move: ";
+                    cin >> origin;
+                    cout << "Enter the coordinates to move to: ";
+                    cin >> destin;
+                }
+                if(origin[0] >= 'a' && origin[0] <= 'h' && origin[1] >= '1' && origin[1] <= '8' && destin[0] >= 'a' && destin[0] <= 'h' && destin[1] >= '1' && destin[1] <= '8'){ // Input validation between a and h and 1 and 8
+                    validInput = true;
+                }
+                else{
+                    cout << "Incorrect coordinates entered!" << endl;
+                }
+            }while(validInput == false);
+
+            for(int k = 0; k < 32; k++){ // Run through all pieces (adjust to run through only specific colour maybe?)
+                if(origin == pPieces[k].xyLoc){ // Find if piece is on origin (before going through board)
+                    if(pPieces[k].code[0] == *turn){
+                        cout << "found origin" << endl;
+                        foundO = true; // Will need to add to WHILE LOOP to control?
+                        movingPiece = k;
+                        allowedMove = true;
+                    }
+                    else{
+                        cout << "The piece you're trying to move is not yours!" << endl;
+                    }
+                }
+            }
+        }while (allowedMove == false);
+
+        for(int i = 0; i < 8; i++) {
+            for(int j = 0; j < 8; j++) { // Run through all x and y
+                if(pBoard[i][j].taken == pPieces[movingPiece].code){ // Finds where piece is/was
+                    pBoard[i][j].taken = ""; // Reset origin to coords
+                    cout << "origin reset" << endl;
+                }
+                if(destin == pBoard[i][j].xyLoc){ // Find destination
+                    foundD = true;
+                    cout << "found destin" << endl;
+                    if(pBoard[i][j].taken != "")
+                    {
+                        cout << "piece on destin" << endl;
+                        for(int k = 0; k < 32; k++){ // Run through all pieces
+                                if(pPieces[k].xyLoc == destin){ // Finds piece on spot and removes it
+                                    pPieces[k].xyLoc = "";
+                                    pBoard[i][j].taken = pPieces[movingPiece].code; // Move piece to destination on board
+                                    pPieces[movingPiece].xyLoc = destin; // Record new location in pieces
+                                    validMove = true; // Confirm move was valid
+                                    cout << "1destin set" << endl;
+                                    break;
+                                }
+                        }
+                    }
+                    else{
+                        cout << "no piece on destin" << endl;
+                        pBoard[i][j].taken = pPieces[movingPiece].code; // Move piece to destination on board
+                        pPieces[movingPiece].xyLoc = destin; // Record new location in pieces
+                        validMove = true; // Confirm move was valid
+                        cout << "2destin set" << endl;
+                    }
+                }
+            }
+        }
+        if(foundO == false){
+            cout << "No valid piece found at origin position." << endl;
+            foundD = true; // Prevent duplicate messages
+        }
+        if(foundD == false){
+            cout << "Invalid destination position." << endl;
+        }
+        if (!validMove){
+                cout << "Invalid move!" << endl;
+        }
+    }while(!validMove);
 }
 
-void displayBoard(Coordinates (*pBoard)[8]) // Displays chessboard
+void checkMate(Pieces *pPieces, Coordinates (*pBoard)[8], bool *checkmate, bool *stalemate) // Determines if checkmate happened (stalemate WIP)
+{
+    if(pPieces[20].xyLoc == "" || pPieces[28].xyLoc == ""){ // If a king is not on the board, checkmate (index white king 20, black king 28)
+        *checkmate = true;
+    }
+    // stalemate code, much tougher here
+}
+
+void displayBoard(Coordinates (*pBoard)[8], Pieces *pPieces) // Displays chessboard and taken pieces
 {
     cout << "\nCurrent chessboard: " << endl;
     for(int i = 0; i < 8; i++) {
         for(int j = 0; j < 8; j++) {
-            if(pBoard[i][j].taken == "") // If not taken, cout coordinates, otherwise cout the piece on it's code
-            {
+            if(pBoard[i][j].taken == ""){ // If not taken, cout coordinates, otherwise cout the piece on it's code
                 cout << setw(4) << left << pBoard[i][j].xyLoc;
             }
-            else
-            {
+            else{
                 cout << setw(4) << left << pBoard[i][j].taken;
             }
         }
         cout << endl;
     }
+    cout << "\nPieces taken: " << endl;
+    cout << "White: ";
+    for(int k = 0; k < 8; k++){ // Lists all white pieces taken
+        if(pPieces[k].xyLoc == ""){ // White pawns
+            cout << pPieces[k].code << " ";
+        }
+        if(pPieces[k+16].xyLoc == ""){ // White uniques
+            cout << pPieces[k+16].code << " ";
+        }
+    }
+    cout << endl;
+    cout << "Black: ";
+    for(int k = 0; k < 8; k++){ // Lists all black pieces taken
+        if(pPieces[k+8].xyLoc == ""){ // Black pawns
+            cout << pPieces[k+8].code << " ";
+        }
+        if(pPieces[k+24].xyLoc == ""){ // Black uniques
+            cout << pPieces[k+24].code << " ";
+        }
+    }
+    cout << endl;
 }
 
 void populateChessboard(Coordinates (*pBoard)[8]) // Populates and displays chessboard
@@ -210,8 +332,3 @@ void addPieces(Pieces *pPieces, Coordinates (*pBoard)[8]) // Creates pieces and 
         }
     }
 }
-
-//void movePiece(int arrBoard[][], int location)
-//{
-//
-//}
