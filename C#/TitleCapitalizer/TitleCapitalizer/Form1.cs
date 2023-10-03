@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+Author: Daniël De Jager
+Date last updated: 03/10/2023
+Name: Title Capitalizer
+Desc: Takes titles and capitalizes them
+*/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
