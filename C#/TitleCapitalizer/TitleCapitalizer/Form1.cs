@@ -15,8 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions; // For string searching
-using System.Globalization; // For capitalization
-using System.IO;
+using System.IO; // For file reading
 
 namespace TitleCapitalizer
 {
@@ -28,22 +27,22 @@ namespace TitleCapitalizer
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            lblOutput.Text = "";
+            lblOutput.Text = ""; // Make output label blank on load
         }
 
         private void btnCapitalize_Click(object sender, EventArgs e)
         {
-            lblOutput.Text = "";
-            string title = txtTitle.Text;
-            string[] words = title.Split(' ');
+            lblOutput.Text = ""; // Resets the label in case Clear button isn't clicked
+            string title = txtTitle.Text; // Store the title entered in the textbox
+            string[] words = title.Split(' '); // Splits the provided title into an array of words
 
             StreamReader inputFile = File.OpenText("lowercase.txt"); // Open lowercase.txt
 
+            string[] lowercaseWords = new string[20]; // Assume there will be 20 or less lowercase words
             int i = 0;
-            string[] lowercaseWords = new string[20];
-            while(!inputFile.EndOfStream)
+            while (!inputFile.EndOfStream)
             {
-                lowercaseWords[i] = inputFile.ReadLine();
+                lowercaseWords[i] = inputFile.ReadLine(); // Get all the words from lowercase.txt into an array
                 i++;
             }
             inputFile.Close(); // Close lowercase.txt
@@ -54,41 +53,41 @@ namespace TitleCapitalizer
 
                 foreach (string word in words)
                 {
-                    string lowercaseWord = word.ToLower();
+                    string lowercaseWord = word.ToLower(); // Lowercase all the words for proper handling
 
-                    if (lowercaseWords.Contains(lowercaseWord))
+                    if (lowercaseWords.Contains(lowercaseWord)) // If word is on lowercase list
                     {
-                        if (firstWord)
+                        if (firstWord) // First time always capitalize
                         {
-                            if (word[0] == '"')
+                            if (word[0] == '"') // If "word'
                             {
                                 lblOutput.Text += "\"" + char.ToUpper(word[1]) + word.Substring(2) + " ";
                             }
-                            else if (word[0] == '\'')
+                            else if (word[0] == '\'') // If 'word'
                             {
                                 lblOutput.Text += "\'" + char.ToUpper(word[1]) + word.Substring(2) + " ";
                             }
-                            else
+                            else // If no " or '
                             {
                                 lblOutput.Text += char.ToUpper(word[0]) + word.Substring(1) + " ";
                             }
                         }
-                        else
+                        else // If not first time, keep lowercase
                         {
-                            lblOutput.Text += lowercaseWord + " "; // Match found, keep it lowercase
+                            lblOutput.Text += lowercaseWord + " ";
                         }
                     }
-                    else
+                    else // If word is not on lowercase list
                     {
-                        if (word[0] == '"')
+                        if (word[0] == '"') // If "word"
                         {
                             lblOutput.Text += "\"" + char.ToUpper(word[1]) + word.Substring(2) + " ";
                         }
-                        else if (word[0] == '\'')
+                        else if (word[0] == '\'') // If 'word'
                         {
                             lblOutput.Text += "\'" + char.ToUpper(word[1]) + word.Substring(2) + " ";
                         }
-                        else
+                        else // If no " or '
                         {
                             lblOutput.Text += char.ToUpper(word[0]) + word.Substring(1) + " ";
                         }
@@ -101,14 +100,19 @@ namespace TitleCapitalizer
             {
                 MessageBox.Show(ex.Message);
             }
-            lstPrevious.Items.Add(lblOutput.Text);
+            lstPrevious.Items.Add(lblOutput.Text); // Title capitalizer history
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void btnReset_Click(object sender, EventArgs e) // Clears all except title capitalizer history
         {
             txtTitle.Text = "";
             lblOutput.Text = "";
             txtTitle.Focus();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            lstPrevious.Items.Clear();
         }
     }
 }
