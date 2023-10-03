@@ -1,0 +1,10 @@
+C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\TitleCapitalizer\TitleCapitalizer\bin\Debug\TitleCapitalizer.exe.config
+C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\TitleCapitalizer\TitleCapitalizer\bin\Debug\TitleCapitalizer.exe
+C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\TitleCapitalizer\TitleCapitalizer\bin\Debug\TitleCapitalizer.pdb
+C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\TitleCapitalizer\TitleCapitalizer\obj\Debug\TitleCapitalizer.csproj.AssemblyReference.cache
+C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\TitleCapitalizer\TitleCapitalizer\obj\Debug\TitleCapitalizer.Form1.resources
+C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\TitleCapitalizer\TitleCapitalizer\obj\Debug\TitleCapitalizer.Properties.Resources.resources
+C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\TitleCapitalizer\TitleCapitalizer\obj\Debug\TitleCapitalizer.csproj.GenerateResource.cache
+C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\TitleCapitalizer\TitleCapitalizer\obj\Debug\TitleCapitalizer.csproj.CoreCompileInputs.cache
+C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\TitleCapitalizer\TitleCapitalizer\obj\Debug\TitleCapitalizer.exe
+C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\TitleCapitalizer\TitleCapitalizer\obj\Debug\TitleCapitalizer.pdb
