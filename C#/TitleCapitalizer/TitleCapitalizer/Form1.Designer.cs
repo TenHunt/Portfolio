@@ -38,8 +38,10 @@ namespace TitleCapitalizer
             this.lblOutput = new System.Windows.Forms.Label();
             this.lstPrevious = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.gbHistory = new System.Windows.Forms.GroupBox();
             this.gbInput.SuspendLayout();
             this.gbResult.SuspendLayout();
+            this.gbHistory.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtTitle
@@ -103,15 +105,15 @@ namespace TitleCapitalizer
             // lstPrevious
             // 
             this.lstPrevious.FormattingEnabled = true;
-            this.lstPrevious.Location = new System.Drawing.Point(12, 164);
+            this.lstPrevious.Location = new System.Drawing.Point(0, 19);
             this.lstPrevious.Name = "lstPrevious";
-            this.lstPrevious.Size = new System.Drawing.Size(358, 160);
+            this.lstPrevious.Size = new System.Drawing.Size(358, 147);
             this.lstPrevious.TabIndex = 4;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(306, 289);
+            this.button1.Location = new System.Drawing.Point(294, 131);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(58, 26);
             this.button1.TabIndex = 5;
@@ -119,18 +121,30 @@ namespace TitleCapitalizer
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // gbHistory
+            // 
+            this.gbHistory.Controls.Add(this.button1);
+            this.gbHistory.Controls.Add(this.lstPrevious);
+            this.gbHistory.Location = new System.Drawing.Point(12, 164);
+            this.gbHistory.Name = "gbHistory";
+            this.gbHistory.Size = new System.Drawing.Size(358, 166);
+            this.gbHistory.TabIndex = 6;
+            this.gbHistory.TabStop = false;
+            this.gbHistory.Text = "History";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 341);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.lstPrevious);
+            this.ClientSize = new System.Drawing.Size(381, 345);
+            this.Controls.Add(this.gbHistory);
             this.Controls.Add(this.gbResult);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnCapitalize);
             this.Controls.Add(this.gbInput);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(397, 384);
+            this.MinimumSize = new System.Drawing.Size(397, 384);
             this.Name = "Form1";
             this.Text = "Title Capitalizer";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -138,6 +152,7 @@ namespace TitleCapitalizer
             this.gbInput.PerformLayout();
             this.gbResult.ResumeLayout(false);
             this.gbResult.PerformLayout();
+            this.gbHistory.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -152,6 +167,7 @@ namespace TitleCapitalizer
         private System.Windows.Forms.Label lblOutput;
         private System.Windows.Forms.ListBox lstPrevious;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox gbHistory;
     }
 }
 
