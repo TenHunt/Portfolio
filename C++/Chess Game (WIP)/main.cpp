@@ -94,9 +94,9 @@ void movePiece(Pieces *pPieces, Coordinates (*pBoard)[8], char *turn) // Big fun
         bool foundD = false;
 
         do{
-            // readd destin and origin to reset loop?
+            // read destin and origin to reset loop?
             bool validInput = false;
-            bool allowedMove = false; // Checks colours and coords within range
+            //bool allowedMove = false; // Checks colours and coords within range
             legal = false; // Checks if the piece is allowed to move that
             validMove = false; // Checks if moved properly
             bool foundO = false;
@@ -119,26 +119,29 @@ void movePiece(Pieces *pPieces, Coordinates (*pBoard)[8], char *turn) // Big fun
                     }
                     if(origin[0] >= 'a' && origin[0] <= 'h' && origin[1] >= '1' && origin[1] <= '8' && destin[0] >= 'a' && destin[0] <= 'h' && destin[1] >= '1' && destin[1] <= '8'){ // Input validation between a and h and 1 and 8
                         validInput = true;
+                        cout << "Valid input" << endl;
                     }
                     else{
                         cout << "Incorrect coordinates entered!" << endl;
                     }
                 }while(validInput == false);
 
-                for(int k = 0; k < 32; k++){ // Run through all pieces (adjust to run through only specific colour maybe?)
-                    if(origin == pPieces[k].xyLoc){ // Find if piece is on origin (before going through board)
-                        if(pPieces[k].code[0] == *turn){
-                            cout << "found origin" << endl;
+                for(int l = 0; l < 32; l++){ // Run through all pieces (adjust to run through only specific colour maybe?)
+                    if(origin == pPieces[l].xyLoc){ // Find if piece is on origin (before going through board)
+                        if(pPieces[l].code[0] == *turn){
+                            cout << "Their piece at origin" << endl;
                             foundO = true; // Will need to add to WHILE LOOP to control?
-                            movingPiece = k;
-                            allowedMove = true;
+                            movingPiece = l;
+                            cout << "Moving piece should be: " << pPieces[l].xyLoc << " " << l << endl;
+                            //allowedMove = true;
                         }
                         else{
                             cout << "The piece you're trying to move is not yours!" << endl;
+                            foundO = false;
                         }
                     }
                 }
-            }while (allowedMove == false);
+            }while (foundO == false);
 
             bool sameX = false;
             bool sameY = false;
@@ -153,29 +156,30 @@ void movePiece(Pieces *pPieces, Coordinates (*pBoard)[8], char *turn) // Big fun
             unsigned int xDist = 0;
             unsigned int yDist = 0;
 
-            xDist = origin[0] - destin[0]; // Calculations for diagonal
-            yDist = origin[1] - destin[1];
+            // Calculations for diagonal
+            xDist = origin[0] - destin[0]; // Change of a through h
+            yDist = origin[1] - destin[1]; // Change of 1 through 8
 
             if(origin[0] == destin[0]){ // If X coordinate is the same
                 sameX = true;
-                straight = true;
-                cout << "True: Straight move along X" << endl;
+                straight = true; // If any one of the coordinates are the same then it cannot be diagonal or L-shaped
+                cout << "Move: Straight along X" << endl;
             }
             else if(origin[1] == destin[1]){ // If Y coordiante is the same
                 sameY = true;
-                straight = true;
-                cout << "True: Straight move along Y" << endl;
+                straight = true; // If any one of the coordinates are the same then it cannot be diagonal or L-shaped
+                cout << "Move: Straight along Y" << endl;
             }
-            else if((xDist - yDist == 0)){ // If diagonal test
+            else if((xDist - yDist == 0)){ // If movement across both axes are the same, then it's diagonal
                 diagonal = true;
-                cout << "True: Diagonal" << endl;
+                cout << "Move: Diagonal" << endl;
             }
             else if(false){ // If knight shapeL
                 shapeL = true;
+                cout << "Move: L-shaped" << endl;
             }
-            else {
-                // illegal move for any piece
-                cout << "False: Illegal move for any piece" << endl;
+            else { // Illegal move for any piece
+                cout << "Move False: Illegal for any piece" << endl;
             }
             if(pPieces[movingPiece].legal[0] == 's' && straight){ // If piece legal move is straight and desired move is straight
                 if(sameX){ // If same X coords
@@ -186,12 +190,13 @@ void movePiece(Pieces *pPieces, Coordinates (*pBoard)[8], char *turn) // Big fun
                     distance = origin[0] - destin[0]; // Movement must be across X
                     cout << distance << " distance same Y" << endl;
                 }
-                if (distance <= pPieces[movingPiece].legal[1] && distance > 0){ // If movement is inside allowed amount and more than 0
-                    if(sameX){
+                if(distance <= pPieces[movingPiece].legal[1] && distance > 0){ // If movement is inside allowed amount and more than 0
+                    if(sameX){ // Need to change a through h to move
                         signDist = origin[1] - destin[1];
                         cout << "Same X after distance " << signDist << endl;
                         if(signDist > 0){
                             for(int k = 1; k < (signDist-1); k++){ // -1 to not count in final destination
+                                cout << "One movement check ---" << endl;
                                 for(int i = 0; i < 8; i++) {
                                     for(int j = 0; j < 8; j++) {
                                         tempCoord = (origin[0] + k) + destin[0];
@@ -214,26 +219,26 @@ void movePiece(Pieces *pPieces, Coordinates (*pBoard)[8], char *turn) // Big fun
                         else{
                             cout << "SignDist smaller than 0" << endl;
                             for(int k = -1; k >= (signDist); k--){ // Distance from origin to destin
+                                cout << "One movement check ---" << endl;
                                 for(int i = 0; i < 8; i++) { // Run through all coords
                                     for(int j = 0; j < 8; j++) {
-                                        tempInt = (static_cast<char>(destin[1] + k) - '0') - k;
-                                        cout << tempInt << endl;
-                                        tempCoord = destin[0] + to_string(tempInt); // origin[0] and destin[0] should be the same for movement across Y, same X
-                                        cout << tempCoord << endl;
+                                        tempInt = (static_cast<char>(destin[1] + k) - '0') - k; // "- '0'" makes it a char I think
+                                        cout << tempInt << " ";
+                                        tempCoord = destin[0] + to_string(tempInt); // origin[0] and destin[0] should be the same for movement across Y (same X)
+                                        cout << tempCoord << " ";
                                         if(pBoard[i][j].xyLoc == tempCoord){
                                             if(pBoard[i][j].taken == ""){
                                                 legal = true;
-                                                cout << "No piece in way" << endl;
-                                                break;
+                                                cout << "\nNo piece in way" << endl;
                                             }
                                             else{
                                                 legal = false;
-                                                cout << "The piece " << pBoard[i][j].taken << " is in the way." << endl;
+                                                cout << "\nThe piece " << pBoard[i][j].taken << " is in the way." << endl;
                                             }
                                         }
                                     }
                                 }
-                                cout << "Ran piece in way check" << endl;
+                                cout << "\nRan piece in way check" << endl;
                             }
                         }
                     }
@@ -258,15 +263,20 @@ void movePiece(Pieces *pPieces, Coordinates (*pBoard)[8], char *turn) // Big fun
         }while (legal == false);
 
         // ----------------------------------------------------------------------------------------------
-        cout << "Start next check?" << endl;
-        for(int i = 0; i < 8; i++) {
-            //pPieces[movingPiece].xyLoc = ;
-            for(int j = 0; j < 8; j++) { // Run through all x and y
-                if(pBoard[i][j].taken == pPieces[movingPiece].xyLoc){ // Finds where piece is/was
+        cout << "Part 2" << endl;
+        for(int i = 0; i < 8; i++) { // Run through all coords
+            for(int j = 0; j < 8; j++) {
+                cout << "Moving piece: " << pPieces[movingPiece].xyLoc << " and " << " destination: " << pBoard[i][j].xyLoc << endl;
+                if(pBoard[i][j].xyLoc == pPieces[movingPiece].xyLoc){ // Finds where piece is/was
                     pBoard[i][j].taken = ""; // Reset origin to coords
                     foundO = true;
                     cout << "origin reset" << endl;
                 }
+            }
+        }
+        cout << "Part 3" << endl;
+        for(int i = 0; i < 8; i++) { // Run through all coords 2
+            for(int j = 0; j < 8; j++) {
                 cout << "DESTIN " << destin << endl;
                 if(destin == pBoard[i][j].xyLoc){ // Find destination
                     foundD = true;
