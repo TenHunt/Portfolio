@@ -40,15 +40,16 @@ namespace Loadshedding_Schedule
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(74, 520);
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(74, 517);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(129, 20);
-            this.txtSearch.TabIndex = 0;
+            this.txtSearch.Size = new System.Drawing.Size(129, 23);
+            this.txtSearch.TabIndex = 2;
             // 
             // lblSearch
             // 
             this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(12, 523);
+            this.lblSearch.Location = new System.Drawing.Point(12, 522);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(56, 13);
             this.lblSearch.TabIndex = 1;
@@ -59,7 +60,7 @@ namespace Loadshedding_Schedule
             this.btnSearch.Location = new System.Drawing.Point(209, 515);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(130, 28);
-            this.btnSearch.TabIndex = 2;
+            this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -69,7 +70,7 @@ namespace Loadshedding_Schedule
             this.btnSubmit.Location = new System.Drawing.Point(560, 515);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(150, 28);
-            this.btnSubmit.TabIndex = 4;
+            this.btnSubmit.TabIndex = 5;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -83,7 +84,7 @@ namespace Loadshedding_Schedule
             this.webView.Name = "webView";
             this.webView.Size = new System.Drawing.Size(698, 497);
             this.webView.Source = new System.Uri("https://www.google.com/maps", System.UriKind.Absolute);
-            this.webView.TabIndex = 5;
+            this.webView.TabIndex = 0;
             this.webView.ZoomFactor = 1D;
             // 
             // lblResult
@@ -91,9 +92,9 @@ namespace Loadshedding_Schedule
             this.lblResult.AutoSize = true;
             this.lblResult.Location = new System.Drawing.Point(345, 523);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(40, 13);
-            this.lblResult.TabIndex = 6;
-            this.lblResult.Text = "Result:";
+            this.lblResult.Size = new System.Drawing.Size(162, 13);
+            this.lblResult.TabIndex = 4;
+            this.lblResult.Text = "Enter your area and click Search";
             // 
             // Search
             // 

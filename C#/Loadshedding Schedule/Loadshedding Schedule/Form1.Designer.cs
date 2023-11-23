@@ -43,7 +43,9 @@ namespace Loadshedding_Schedule
             this.txtDuration = new System.Windows.Forms.TextBox();
             this.lblDuration = new System.Windows.Forms.Label();
             this.grpDetails = new System.Windows.Forms.GroupBox();
+            this.lblAreaName = new System.Windows.Forms.Label();
             this.btnArea = new System.Windows.Forms.Button();
+            this.lblAreaID = new System.Windows.Forms.Label();
             this.lblEnd = new System.Windows.Forms.Label();
             this.lblStart = new System.Windows.Forms.Label();
             this.btnStatus = new System.Windows.Forms.Button();
@@ -52,8 +54,6 @@ namespace Loadshedding_Schedule
             this.lblNextStageTime = new System.Windows.Forms.Label();
             this.lblNextStage = new System.Windows.Forms.Label();
             this.lblCurrentStage = new System.Windows.Forms.Label();
-            this.lblAreaID = new System.Windows.Forms.Label();
-            this.lblAreaName = new System.Windows.Forms.Label();
             this.grpTest.SuspendLayout();
             this.grpNotifier.SuspendLayout();
             this.grpDetails.SuspendLayout();
@@ -65,10 +65,10 @@ namespace Loadshedding_Schedule
             this.btnCheck.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCheck.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheck.Location = new System.Drawing.Point(154, 178);
+            this.btnCheck.Location = new System.Drawing.Point(136, 95);
             this.btnCheck.Name = "btnCheck";
-            this.btnCheck.Size = new System.Drawing.Size(128, 48);
-            this.btnCheck.TabIndex = 2;
+            this.btnCheck.Size = new System.Drawing.Size(128, 42);
+            this.btnCheck.TabIndex = 6;
             this.btnCheck.Text = "Check Now";
             this.btnCheck.UseVisualStyleBackColor = true;
             this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
@@ -78,7 +78,7 @@ namespace Loadshedding_Schedule
             this.btnSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSchedule.Location = new System.Drawing.Point(6, 97);
             this.btnSchedule.Name = "btnSchedule";
-            this.btnSchedule.Size = new System.Drawing.Size(258, 55);
+            this.btnSchedule.Size = new System.Drawing.Size(258, 42);
             this.btnSchedule.TabIndex = 6;
             this.btnSchedule.Text = "Schedule Reminder";
             this.btnSchedule.UseVisualStyleBackColor = true;
@@ -87,7 +87,7 @@ namespace Loadshedding_Schedule
             // radCurrent
             // 
             this.radCurrent.AutoSize = true;
-            this.radCurrent.Location = new System.Drawing.Point(12, 19);
+            this.radCurrent.Location = new System.Drawing.Point(12, 16);
             this.radCurrent.Name = "radCurrent";
             this.radCurrent.Size = new System.Drawing.Size(59, 17);
             this.radCurrent.TabIndex = 0;
@@ -98,7 +98,7 @@ namespace Loadshedding_Schedule
             // radFuture
             // 
             this.radFuture.AutoSize = true;
-            this.radFuture.Location = new System.Drawing.Point(77, 19);
+            this.radFuture.Location = new System.Drawing.Point(12, 34);
             this.radFuture.Name = "radFuture";
             this.radFuture.Size = new System.Drawing.Size(55, 17);
             this.radFuture.TabIndex = 1;
@@ -110,10 +110,10 @@ namespace Loadshedding_Schedule
             // 
             this.grpTest.Controls.Add(this.radCurrent);
             this.grpTest.Controls.Add(this.radFuture);
-            this.grpTest.Location = new System.Drawing.Point(12, 178);
+            this.grpTest.Location = new System.Drawing.Point(181, 36);
             this.grpTest.Name = "grpTest";
-            this.grpTest.Size = new System.Drawing.Size(136, 48);
-            this.grpTest.TabIndex = 1;
+            this.grpTest.Size = new System.Drawing.Size(81, 56);
+            this.grpTest.TabIndex = 4;
             this.grpTest.TabStop = false;
             this.grpTest.Text = "Test modes";
             // 
@@ -126,10 +126,10 @@ namespace Loadshedding_Schedule
             this.grpNotifier.Controls.Add(this.txtDuration);
             this.grpNotifier.Controls.Add(this.lblDuration);
             this.grpNotifier.Controls.Add(this.btnSchedule);
-            this.grpNotifier.Location = new System.Drawing.Point(12, 12);
+            this.grpNotifier.Location = new System.Drawing.Point(12, 286);
             this.grpNotifier.Name = "grpNotifier";
-            this.grpNotifier.Size = new System.Drawing.Size(270, 160);
-            this.grpNotifier.TabIndex = 0;
+            this.grpNotifier.Size = new System.Drawing.Size(270, 148);
+            this.grpNotifier.TabIndex = 2;
             this.grpNotifier.TabStop = false;
             this.grpNotifier.Text = "Daily Notification Scheduler";
             // 
@@ -186,24 +186,44 @@ namespace Loadshedding_Schedule
             this.grpDetails.Controls.Add(this.lblAreaName);
             this.grpDetails.Controls.Add(this.btnArea);
             this.grpDetails.Controls.Add(this.lblAreaID);
+            this.grpDetails.Controls.Add(this.grpTest);
             this.grpDetails.Controls.Add(this.lblEnd);
+            this.grpDetails.Controls.Add(this.btnCheck);
             this.grpDetails.Controls.Add(this.lblStart);
-            this.grpDetails.Location = new System.Drawing.Point(12, 232);
+            this.grpDetails.Location = new System.Drawing.Point(12, 12);
             this.grpDetails.Name = "grpDetails";
-            this.grpDetails.Size = new System.Drawing.Size(270, 103);
-            this.grpDetails.TabIndex = 3;
+            this.grpDetails.Size = new System.Drawing.Size(270, 145);
+            this.grpDetails.TabIndex = 0;
             this.grpDetails.TabStop = false;
-            this.grpDetails.Text = "Details";
+            this.grpDetails.Text = "Check Loadshedding";
+            // 
+            // lblAreaName
+            // 
+            this.lblAreaName.AutoSize = true;
+            this.lblAreaName.Location = new System.Drawing.Point(9, 37);
+            this.lblAreaName.Name = "lblAreaName";
+            this.lblAreaName.Size = new System.Drawing.Size(90, 13);
+            this.lblAreaName.TabIndex = 1;
+            this.lblAreaName.Text = "Area name: None";
             // 
             // btnArea
             // 
-            this.btnArea.Location = new System.Drawing.Point(176, 56);
+            this.btnArea.Location = new System.Drawing.Point(6, 95);
             this.btnArea.Name = "btnArea";
-            this.btnArea.Size = new System.Drawing.Size(88, 39);
-            this.btnArea.TabIndex = 3;
+            this.btnArea.Size = new System.Drawing.Size(128, 42);
+            this.btnArea.TabIndex = 5;
             this.btnArea.Text = "Change area";
             this.btnArea.UseVisualStyleBackColor = true;
             this.btnArea.Click += new System.EventHandler(this.btnArea_Click);
+            // 
+            // lblAreaID
+            // 
+            this.lblAreaID.AutoSize = true;
+            this.lblAreaID.Location = new System.Drawing.Point(9, 18);
+            this.lblAreaID.Name = "lblAreaID";
+            this.lblAreaID.Size = new System.Drawing.Size(75, 13);
+            this.lblAreaID.TabIndex = 0;
+            this.lblAreaID.Text = "Area ID: None";
             // 
             // lblEnd
             // 
@@ -211,7 +231,7 @@ namespace Loadshedding_Schedule
             this.lblEnd.Location = new System.Drawing.Point(9, 77);
             this.lblEnd.Name = "lblEnd";
             this.lblEnd.Size = new System.Drawing.Size(75, 13);
-            this.lblEnd.TabIndex = 2;
+            this.lblEnd.TabIndex = 3;
             this.lblEnd.Text = "Next end time:";
             // 
             // lblStart
@@ -220,14 +240,14 @@ namespace Loadshedding_Schedule
             this.lblStart.Location = new System.Drawing.Point(9, 56);
             this.lblStart.Name = "lblStart";
             this.lblStart.Size = new System.Drawing.Size(77, 13);
-            this.lblStart.TabIndex = 1;
+            this.lblStart.TabIndex = 2;
             this.lblStart.Text = "Next start time:";
             // 
             // btnStatus
             // 
             this.btnStatus.Location = new System.Drawing.Point(6, 68);
             this.btnStatus.Name = "btnStatus";
-            this.btnStatus.Size = new System.Drawing.Size(258, 43);
+            this.btnStatus.Size = new System.Drawing.Size(258, 42);
             this.btnStatus.TabIndex = 4;
             this.btnStatus.Text = "Check Stage Status";
             this.btnStatus.UseVisualStyleBackColor = true;
@@ -240,10 +260,10 @@ namespace Loadshedding_Schedule
             this.gbStages.Controls.Add(this.lblNextStage);
             this.gbStages.Controls.Add(this.btnStatus);
             this.gbStages.Controls.Add(this.lblCurrentStage);
-            this.gbStages.Location = new System.Drawing.Point(12, 341);
+            this.gbStages.Location = new System.Drawing.Point(12, 163);
             this.gbStages.Name = "gbStages";
             this.gbStages.Size = new System.Drawing.Size(270, 117);
-            this.gbStages.TabIndex = 5;
+            this.gbStages.TabIndex = 1;
             this.gbStages.TabStop = false;
             this.gbStages.Text = "Stages";
             // 
@@ -253,7 +273,7 @@ namespace Loadshedding_Schedule
             this.lblNextStageDate.Location = new System.Drawing.Point(107, 45);
             this.lblNextStageDate.Name = "lblNextStageDate";
             this.lblNextStageDate.Size = new System.Drawing.Size(85, 13);
-            this.lblNextStageDate.TabIndex = 7;
+            this.lblNextStageDate.TabIndex = 3;
             this.lblNextStageDate.Text = "Next stage date:";
             // 
             // lblNextStageTime
@@ -262,7 +282,7 @@ namespace Loadshedding_Schedule
             this.lblNextStageTime.Location = new System.Drawing.Point(107, 22);
             this.lblNextStageTime.Name = "lblNextStageTime";
             this.lblNextStageTime.Size = new System.Drawing.Size(83, 13);
-            this.lblNextStageTime.TabIndex = 6;
+            this.lblNextStageTime.TabIndex = 2;
             this.lblNextStageTime.Text = "Next stage time:";
             // 
             // lblNextStage
@@ -271,7 +291,7 @@ namespace Loadshedding_Schedule
             this.lblNextStage.Location = new System.Drawing.Point(9, 45);
             this.lblNextStage.Name = "lblNextStage";
             this.lblNextStage.Size = new System.Drawing.Size(61, 13);
-            this.lblNextStage.TabIndex = 5;
+            this.lblNextStage.TabIndex = 1;
             this.lblNextStage.Text = "Next stage:";
             // 
             // lblCurrentStage
@@ -280,37 +300,17 @@ namespace Loadshedding_Schedule
             this.lblCurrentStage.Location = new System.Drawing.Point(9, 22);
             this.lblCurrentStage.Name = "lblCurrentStage";
             this.lblCurrentStage.Size = new System.Drawing.Size(73, 13);
-            this.lblCurrentStage.TabIndex = 4;
+            this.lblCurrentStage.TabIndex = 0;
             this.lblCurrentStage.Text = "Current stage:";
-            // 
-            // lblAreaID
-            // 
-            this.lblAreaID.AutoSize = true;
-            this.lblAreaID.Location = new System.Drawing.Point(9, 18);
-            this.lblAreaID.Name = "lblAreaID";
-            this.lblAreaID.Size = new System.Drawing.Size(75, 13);
-            this.lblAreaID.TabIndex = 4;
-            this.lblAreaID.Text = "Area ID: None";
-            // 
-            // lblAreaName
-            // 
-            this.lblAreaName.AutoSize = true;
-            this.lblAreaName.Location = new System.Drawing.Point(9, 37);
-            this.lblAreaName.Name = "lblAreaName";
-            this.lblAreaName.Size = new System.Drawing.Size(90, 13);
-            this.lblAreaName.TabIndex = 6;
-            this.lblAreaName.Text = "Area name: None";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(290, 469);
+            this.ClientSize = new System.Drawing.Size(295, 449);
             this.Controls.Add(this.gbStages);
             this.Controls.Add(this.grpDetails);
             this.Controls.Add(this.grpNotifier);
-            this.Controls.Add(this.grpTest);
-            this.Controls.Add(this.btnCheck);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";

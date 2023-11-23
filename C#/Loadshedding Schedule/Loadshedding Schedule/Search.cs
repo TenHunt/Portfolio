@@ -44,7 +44,7 @@ namespace Loadshedding_Schedule
 
             while(!match.Success && count < 10)
             {
-                lblResult.Text = "Please wait...";
+                lblResult.Text = "Finding coordinates...";
                 await System.Threading.Tasks.Task.Delay(2000);
                 coords = webView.Source.ToString();
                 regex = new Regex(@"@(-?\d+\.\d+),(-?\d+\.\d+)");
@@ -58,12 +58,13 @@ namespace Loadshedding_Schedule
                 longitude = match.Groups[2].Value;
 
                 // You can use these values as needed
-                lblResult.Text = $"Latitude: {latitude}, Longitude: {longitude}";
+                //lblResult.Text = $"Latitude: {latitude}, Longitude: {longitude}";
+                lblResult.Text = $"Coordinates found!";
             }
             else
             {
-                lblResult.Text = "Coordinates not found in the URL";
-                MessageBox.Show(coords);
+                //lblResult.Text = "Coordinates not found in the URL";
+                //MessageBox.Show(coords);
             }
         }
 
@@ -73,7 +74,6 @@ namespace Loadshedding_Schedule
             {
                 btnSubmit.Text = "Please wait...";
                 SearchArea();
-                this.Close();
             }
             else
             {
@@ -109,6 +109,7 @@ namespace Loadshedding_Schedule
                     areaName = areas[0].name;
                     //MessageBox.Show(closestArea);
                     await System.Threading.Tasks.Task.Delay(2000);
+                    this.Close();
                 }
             }
             catch (HttpRequestException ex)
