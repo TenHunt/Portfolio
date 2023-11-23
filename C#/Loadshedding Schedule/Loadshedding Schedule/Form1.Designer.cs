@@ -42,8 +42,22 @@ namespace Loadshedding_Schedule
             this.lblInterval = new System.Windows.Forms.Label();
             this.txtDuration = new System.Windows.Forms.TextBox();
             this.lblDuration = new System.Windows.Forms.Label();
+            this.grpDetails = new System.Windows.Forms.GroupBox();
+            this.btnArea = new System.Windows.Forms.Button();
+            this.lblEnd = new System.Windows.Forms.Label();
+            this.lblStart = new System.Windows.Forms.Label();
+            this.btnStatus = new System.Windows.Forms.Button();
+            this.gbStages = new System.Windows.Forms.GroupBox();
+            this.lblNextStageDate = new System.Windows.Forms.Label();
+            this.lblNextStageTime = new System.Windows.Forms.Label();
+            this.lblNextStage = new System.Windows.Forms.Label();
+            this.lblCurrentStage = new System.Windows.Forms.Label();
+            this.lblAreaID = new System.Windows.Forms.Label();
+            this.lblAreaName = new System.Windows.Forms.Label();
             this.grpTest.SuspendLayout();
             this.grpNotifier.SuspendLayout();
+            this.grpDetails.SuspendLayout();
+            this.gbStages.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCheck
@@ -167,11 +181,133 @@ namespace Loadshedding_Schedule
             this.lblDuration.TabIndex = 2;
             this.lblDuration.Text = "Notification duration (hours):";
             // 
+            // grpDetails
+            // 
+            this.grpDetails.Controls.Add(this.lblAreaName);
+            this.grpDetails.Controls.Add(this.btnArea);
+            this.grpDetails.Controls.Add(this.lblAreaID);
+            this.grpDetails.Controls.Add(this.lblEnd);
+            this.grpDetails.Controls.Add(this.lblStart);
+            this.grpDetails.Location = new System.Drawing.Point(12, 232);
+            this.grpDetails.Name = "grpDetails";
+            this.grpDetails.Size = new System.Drawing.Size(270, 103);
+            this.grpDetails.TabIndex = 3;
+            this.grpDetails.TabStop = false;
+            this.grpDetails.Text = "Details";
+            // 
+            // btnArea
+            // 
+            this.btnArea.Location = new System.Drawing.Point(176, 56);
+            this.btnArea.Name = "btnArea";
+            this.btnArea.Size = new System.Drawing.Size(88, 39);
+            this.btnArea.TabIndex = 3;
+            this.btnArea.Text = "Change area";
+            this.btnArea.UseVisualStyleBackColor = true;
+            this.btnArea.Click += new System.EventHandler(this.btnArea_Click);
+            // 
+            // lblEnd
+            // 
+            this.lblEnd.AutoSize = true;
+            this.lblEnd.Location = new System.Drawing.Point(9, 77);
+            this.lblEnd.Name = "lblEnd";
+            this.lblEnd.Size = new System.Drawing.Size(75, 13);
+            this.lblEnd.TabIndex = 2;
+            this.lblEnd.Text = "Next end time:";
+            // 
+            // lblStart
+            // 
+            this.lblStart.AutoSize = true;
+            this.lblStart.Location = new System.Drawing.Point(9, 56);
+            this.lblStart.Name = "lblStart";
+            this.lblStart.Size = new System.Drawing.Size(77, 13);
+            this.lblStart.TabIndex = 1;
+            this.lblStart.Text = "Next start time:";
+            // 
+            // btnStatus
+            // 
+            this.btnStatus.Location = new System.Drawing.Point(6, 68);
+            this.btnStatus.Name = "btnStatus";
+            this.btnStatus.Size = new System.Drawing.Size(258, 43);
+            this.btnStatus.TabIndex = 4;
+            this.btnStatus.Text = "Check Stage Status";
+            this.btnStatus.UseVisualStyleBackColor = true;
+            this.btnStatus.Click += new System.EventHandler(this.btnStatus_Click);
+            // 
+            // gbStages
+            // 
+            this.gbStages.Controls.Add(this.lblNextStageDate);
+            this.gbStages.Controls.Add(this.lblNextStageTime);
+            this.gbStages.Controls.Add(this.lblNextStage);
+            this.gbStages.Controls.Add(this.btnStatus);
+            this.gbStages.Controls.Add(this.lblCurrentStage);
+            this.gbStages.Location = new System.Drawing.Point(12, 341);
+            this.gbStages.Name = "gbStages";
+            this.gbStages.Size = new System.Drawing.Size(270, 117);
+            this.gbStages.TabIndex = 5;
+            this.gbStages.TabStop = false;
+            this.gbStages.Text = "Stages";
+            // 
+            // lblNextStageDate
+            // 
+            this.lblNextStageDate.AutoSize = true;
+            this.lblNextStageDate.Location = new System.Drawing.Point(107, 45);
+            this.lblNextStageDate.Name = "lblNextStageDate";
+            this.lblNextStageDate.Size = new System.Drawing.Size(85, 13);
+            this.lblNextStageDate.TabIndex = 7;
+            this.lblNextStageDate.Text = "Next stage date:";
+            // 
+            // lblNextStageTime
+            // 
+            this.lblNextStageTime.AutoSize = true;
+            this.lblNextStageTime.Location = new System.Drawing.Point(107, 22);
+            this.lblNextStageTime.Name = "lblNextStageTime";
+            this.lblNextStageTime.Size = new System.Drawing.Size(83, 13);
+            this.lblNextStageTime.TabIndex = 6;
+            this.lblNextStageTime.Text = "Next stage time:";
+            // 
+            // lblNextStage
+            // 
+            this.lblNextStage.AutoSize = true;
+            this.lblNextStage.Location = new System.Drawing.Point(9, 45);
+            this.lblNextStage.Name = "lblNextStage";
+            this.lblNextStage.Size = new System.Drawing.Size(61, 13);
+            this.lblNextStage.TabIndex = 5;
+            this.lblNextStage.Text = "Next stage:";
+            // 
+            // lblCurrentStage
+            // 
+            this.lblCurrentStage.AutoSize = true;
+            this.lblCurrentStage.Location = new System.Drawing.Point(9, 22);
+            this.lblCurrentStage.Name = "lblCurrentStage";
+            this.lblCurrentStage.Size = new System.Drawing.Size(73, 13);
+            this.lblCurrentStage.TabIndex = 4;
+            this.lblCurrentStage.Text = "Current stage:";
+            // 
+            // lblAreaID
+            // 
+            this.lblAreaID.AutoSize = true;
+            this.lblAreaID.Location = new System.Drawing.Point(9, 18);
+            this.lblAreaID.Name = "lblAreaID";
+            this.lblAreaID.Size = new System.Drawing.Size(75, 13);
+            this.lblAreaID.TabIndex = 4;
+            this.lblAreaID.Text = "Area ID: None";
+            // 
+            // lblAreaName
+            // 
+            this.lblAreaName.AutoSize = true;
+            this.lblAreaName.Location = new System.Drawing.Point(9, 37);
+            this.lblAreaName.Name = "lblAreaName";
+            this.lblAreaName.Size = new System.Drawing.Size(90, 13);
+            this.lblAreaName.TabIndex = 6;
+            this.lblAreaName.Text = "Area name: None";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(290, 236);
+            this.ClientSize = new System.Drawing.Size(290, 469);
+            this.Controls.Add(this.gbStages);
+            this.Controls.Add(this.grpDetails);
             this.Controls.Add(this.grpNotifier);
             this.Controls.Add(this.grpTest);
             this.Controls.Add(this.btnCheck);
@@ -184,6 +320,10 @@ namespace Loadshedding_Schedule
             this.grpTest.PerformLayout();
             this.grpNotifier.ResumeLayout(false);
             this.grpNotifier.PerformLayout();
+            this.grpDetails.ResumeLayout(false);
+            this.grpDetails.PerformLayout();
+            this.gbStages.ResumeLayout(false);
+            this.gbStages.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -202,6 +342,18 @@ namespace Loadshedding_Schedule
         private System.Windows.Forms.Label lblInterval;
         private System.Windows.Forms.TextBox txtStartTime;
         private System.Windows.Forms.Label lblStartTime;
+        private System.Windows.Forms.GroupBox grpDetails;
+        private System.Windows.Forms.Label lblEnd;
+        private System.Windows.Forms.Label lblStart;
+        private System.Windows.Forms.Button btnArea;
+        private System.Windows.Forms.Button btnStatus;
+        private System.Windows.Forms.GroupBox gbStages;
+        private System.Windows.Forms.Label lblNextStageTime;
+        private System.Windows.Forms.Label lblNextStage;
+        private System.Windows.Forms.Label lblCurrentStage;
+        private System.Windows.Forms.Label lblNextStageDate;
+        private System.Windows.Forms.Label lblAreaID;
+        private System.Windows.Forms.Label lblAreaName;
     }
 }
 

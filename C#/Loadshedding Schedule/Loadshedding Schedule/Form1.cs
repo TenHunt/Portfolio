@@ -15,8 +15,9 @@ namespace Loadshedding_Schedule
 {
     public partial class Form1 : Form
     {
-        private string token = "D2B65230-E1304BAF-9C78EA86-551AE189"; // My token
-        private string areaId = "eskme-11-worcesterbreedevalleywesterncape"; // My area
+        public string token = "D2B65230-E1304BAF-9C78EA86-551AE189"; // My token
+        public string areaId = "eskme-11-worcesterbreedevalleywesterncape"; // My area
+        public string areaName = "Worcester";
         private bool trigger = false;
         private string start = "";
         private string end = "";
@@ -77,6 +78,9 @@ namespace Loadshedding_Schedule
                     DateTime end_time = DateTime.Parse((firstEvent.end).ToString()); // End of next loadshedding slot
                     start = start_time.ToString("HH:mm tt");
                     end = end_time.ToString("HH:mm tt");
+
+                    lblStart.Text = $"Next start time: {start}";
+                    lblEnd.Text = $"Next end time: {end}";
 
                     // THROWS INDEX OUT OF RANGE ERROR
                     //dynamic secondEvent = events[1]; // Second loadshedding slot
@@ -183,6 +187,9 @@ namespace Loadshedding_Schedule
    
     private async void Form1_Load(object sender, EventArgs e)
         {
+            lblAreaID.Text = $"Area ID: {areaId}";
+            lblAreaName.Text = $"Area name: {areaName}";
+
             string[] args = Environment.GetCommandLineArgs();
 
             if(args.Length > 1 && args[1] == "/check") // If launched with command line argument
@@ -206,6 +213,77 @@ namespace Loadshedding_Schedule
                 Text = "Loadshedding Schedule", // Text must be above "Visible = false" for name to display correctly
                 Visible = false
             };
+        }
+
+        private void btnArea_Click(object sender, EventArgs e)
+        {
+            Search findArea = new Search();
+            findArea.ShowDialog();
+            areaId = findArea.closestArea;
+            areaName = findArea.areaName;
+            lblAreaID.Text = $"Area ID: {areaId}";
+            lblAreaName.Text = $"Area name: {areaName}";
+        }
+
+        private void btnStatus_Click(object sender, EventArgs e)
+        {
+            GetStatus();
+        }
+
+        public async void GetStatus()
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    string url = $"https://developer.sepush.co.za/business/2.0/status";
+
+                    client.DefaultRequestHeaders.Add("token", token);
+
+                    HttpResponseMessage response = await client.GetAsync(url);
+                    response.EnsureSuccessStatusCode();
+
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    dynamic data = JsonConvert.DeserializeObject(responseBody);
+
+                    // Accessing the first event in the response
+                    dynamic status = data.status;
+                    if (status == null || status.Count == 0)
+                    {
+                        throw new InvalidOperationException("No status information found in the response.");
+                    }
+
+                    dynamic nextstages = status.eskom.next_stages;
+                    if(nextstages.Count == 0)
+                    {
+                        lblNextStage.Text = "Next stage: None";
+                        //throw new InvalidOperationException("No status information found in next_stages.");
+                    }
+                    else
+                    {
+                        lblNextStage.Text = $"Next stage: {nextstages[0].stage}";
+                        DateTime next_stage_timestamp = DateTime.Parse((nextstages[0].stage_start_timestamp).ToString());
+                        string next_stage_time = next_stage_timestamp.ToString("HH:mm tt");
+                        lblNextStageTime.Text = next_stage_time;
+                        string next_stage_date = next_stage_timestamp.ToString("dd/MM/yyyy");
+                    }
+
+                    string stage = status.eskom.stage;
+                    lblCurrentStage.Text = $"Current stage: {stage}";
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show($"HTTP Error: {ex.Message}");
+            }
+            catch (JsonException ex)
+            {
+                MessageBox.Show($"JSON Error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}");
+            }
         }
     }
 }

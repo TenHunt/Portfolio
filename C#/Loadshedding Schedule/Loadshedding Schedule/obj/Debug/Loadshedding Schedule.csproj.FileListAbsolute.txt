@@ -21,26 +21,13 @@ C:\Users\MAXIE\Desktop\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\pl\
 C:\Users\MAXIE\Desktop\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\ru\Microsoft.Win32.TaskScheduler.resources.dll
 C:\Users\MAXIE\Desktop\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\zh-CN\Microsoft.Win32.TaskScheduler.resources.dll
 C:\Users\MAXIE\Desktop\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\zh-Hant\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\Loadshedding Schedule.exe.config
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\Loadshedding Schedule.exe
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\Loadshedding Schedule.pdb
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\Microsoft.Win32.TaskScheduler.dll
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\Newtonsoft.Json.dll
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\Microsoft.Win32.TaskScheduler.xml
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\Newtonsoft.Json.xml
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\de\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\es\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\fr\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\it\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\pl\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\ru\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\zh-CN\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\zh-Hant\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\obj\Debug\Loadshedding Schedule.csproj.AssemblyReference.cache
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\obj\Debug\Loadshedding_Schedule.Form1.resources
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\obj\Debug\Loadshedding_Schedule.Properties.Resources.resources
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\obj\Debug\Loadshedding Schedule.csproj.GenerateResource.cache
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\obj\Debug\Loadshedding Schedule.csproj.CoreCompileInputs.cache
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\obj\Debug\Loadshedding Schedule.csproj.CopyComplete
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\obj\Debug\Loadshedding Schedule.exe
-C:\Users\MAXIE\Documents\GitHub\Portfolio\C#\Loadshedding Schedule\Loadshedding Schedule\obj\Debug\Loadshedding Schedule.pdb
+C:\Users\MAXIE\Desktop\Loadshedding Schedule\Loadshedding Schedule\obj\Debug\Loadshedding_Schedule.Search.resources
+C:\Users\MAXIE\Desktop\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\runtimes\win-x86\native\WebView2Loader.dll
+C:\Users\MAXIE\Desktop\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\runtimes\win-x64\native\WebView2Loader.dll
+C:\Users\MAXIE\Desktop\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\runtimes\win-arm64\native\WebView2Loader.dll
+C:\Users\MAXIE\Desktop\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\Microsoft.Web.WebView2.Core.dll
+C:\Users\MAXIE\Desktop\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\Microsoft.Web.WebView2.WinForms.dll
+C:\Users\MAXIE\Desktop\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\Microsoft.Web.WebView2.Wpf.dll
+C:\Users\MAXIE\Desktop\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\Microsoft.Web.WebView2.Core.xml
+C:\Users\MAXIE\Desktop\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\Microsoft.Web.WebView2.WinForms.xml
+C:\Users\MAXIE\Desktop\Loadshedding Schedule\Loadshedding Schedule\bin\Debug\Microsoft.Web.WebView2.Wpf.xml
