@@ -1,0 +1,16 @@
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\bin\Debug\Quotes.mdf
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\bin\Debug\Quotes_log.ldf
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\bin\Debug\DeJager_Daniel_41669436.exe.config
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\bin\Debug\DeJager_Daniel_41669436.exe
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\bin\Debug\DeJager_Daniel_41669436.pdb
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\obj\Debug\DeJager_Daniel_41669436.csproj.AssemblyReference.cache
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\obj\Debug\DeJager_Daniel_41669436.Form1.resources
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\obj\Debug\DeJager_Daniel_41669436.Properties.Resources.resources
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\obj\Debug\DeJager_Daniel_41669436.ViewForm.resources
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\obj\Debug\DeJager_Daniel_41669436.csproj.GenerateResource.cache
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\obj\Debug\DeJager_Daniel_41669436.csproj.CoreCompileInputs.cache
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\obj\Debug\DeJager_Daniel_41669436.exe
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\obj\Debug\DeJager_Daniel_41669436.pdb
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\obj\Debug\DeJager_Daniel_41669436.AdminForm.resources
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\obj\Debug\DeJager_Daniel_41669436.frmInsert.resources
+C:\Users\MAXIE\Desktop\NWU BSC IT\CMPG212 - SQL Databases\Assignments\Big Assignment 1\DeJager_Daniel_41669436\DeJager_Daniel_41669436\DeJager_Daniel_41669436\obj\Debug\DeJager_Daniel_41669436.frmUpdate.resources
