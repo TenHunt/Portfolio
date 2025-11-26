@@ -1,0 +1,252 @@
+.App {
+  text-align: center;
+  background-color: #e5e5e5;
+  color: black;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.coin-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  color: #1b5e70;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color:#7080b3;
+}
+
+.coin-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center; /* center rows */
+  padding: 20px 10% 20px 10%;
+}
+
+.coin-card {
+  text-align: center;
+  font-size: 18px;
+  background-color: #1f2937;
+  color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  flex: 0 1 calc(20% - 16px); /* five per row */
+  box-sizing: border-box;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes content to top, button to bottom */
+}
+
+.coin-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .coin-card {
+    flex: 1 1 100%; /* allow full width */
+    max-width: 100%; /* prevent any max width restriction */
+  }
+
+  .coin-grid {
+    padding: 20px 5%; /* optional: reduce side padding */
+  }
+}
+
+.coin-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.coin-header img {
+  border-radius: 50%;
+}
+
+.currencyLabel {
+  margin-right: 5px;
+}
+
+.currency {
+  padding: 10px;
+}
+
+select {
+  background-color: #595f66; /* dark background */
+  color: #fff;               /* text color */
+  border: 1px solid #4b5563; /* border */
+  border-radius: 6px;
+  min-width: 60px;
+  text-align: center;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  appearance: none; /* removes default arrow in most browsers */
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5"><polygon points="0,0 10,0 5,5" style="fill:white;"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 5px;
+  padding-right: 30px; /* space for arrow */
+}
+
+select option {
+  background-color: #595f66;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.header {
+  text-align: center;
+  padding: 8px 10px 16px 10px;
+  background-color: #282c34;
+  color: white;
+}
+
+.header-title {
+  margin: 5px 0 8px 0;
+}
+
+.header-description {
+  margin: 0 0 2px 0;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  background-color: #c9c9c9;
+  color: black;
+  margin-top: auto;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  font-size: 1.5rem;
+  color: rgb(0, 0, 0);
+  text-shadow:
+  1px 1px 2px rgb(124, 124, 124),
+  0 0 1em rgb(129, 129, 129),
+  0 0 0.2em rgb(153, 153, 153);
+}
+
+.content-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.not-available {
+  text-align: center;
+  align-items: center;
+  padding: 8px 10px 16px 10px;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  background: none;
+  border: none;
+  color: #495677;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.back-button::before {
+  content: '←';
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.back-button:hover {
+  color: #2e333d;
+}
+
+.back-button:hover::before {
+  transform: translateX(-2px);
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 800px;
+  justify-content: center;
+}
+
+.left-column {
+  flex: 1 1 350px;
+  min-width: 350px;
+  max-width: 500px;
+}
+
+.right-column {
+  flex: 1 1 350px;
+  min-width: 350px;
+  max-width: 500px;
+}
+
+.chart-container {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.details-button {
+  padding: 10px 20px;
+  background-color: #6792c0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.details-button:hover {
+  background-color: #58718b;
+}
